@@ -2,11 +2,11 @@ combiner: {fc_size: "{{[24,48,64]}}", num_fc_layers: 1, type: concat}
 input_features:
 - {name: Pclass, type: category}
 - {name: Sex, type: category}
-- {missing_value_strategy: fill_with_mean, name: Age, type: numerical}
+- {name: Age, type: numerical,missing_value_strategy: fill_with_mean}
 - {name: SibSp, type: numerical}
 - {name: Parch, type: numerical}
-- {missing_value_strategy: fill_with_mean, name: Fare, type: numerical}
-- {name: Embarked, representation: sparse, type: category}
+- {name: Fare, type: numerical, missing_value_strategy: fill_with_mean}
+- {name: Embarked, representation: "{{[sparse, dense]}}", type: category}
 output_features:
 - {name: Survived, type: binary}
 training:
@@ -25,7 +25,7 @@ training:
   increase_batch_size_on_plateau_rate: 2
   learning_rate: 0.001
   learning_rate_warmup_epochs: 5
-  optimizer: {beta1: 0.9, beta2: 0.999, epsilon: 1.0e-08, type: "{{[adam,sgd]}}"}
+  optimizer: {beta1: 0.9, beta2: 0.999, epsilon: 1.0e-08, type: adam}
   reduce_learning_rate_on_plateau: 0
   reduce_learning_rate_on_plateau_patience: 5
   reduce_learning_rate_on_plateau_rate: 0.5
