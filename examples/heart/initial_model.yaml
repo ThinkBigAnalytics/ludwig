@@ -1,0 +1,65 @@
+input_features:
+  -
+    name: age
+    type: numerical
+  -
+    name: sex
+    type: category
+
+  -
+    name: chest-pain-type
+    type: category
+
+  -
+    name: resting-blood-pressure
+    type: numerical
+
+  -
+    name: cholesterol
+    type: numerical
+
+  -
+    name: fasting-blood-sugar
+    type: category
+
+  -
+    name: resting-ecg
+    type: category
+
+  -
+    name: max-heart-rate
+    type: numerical
+
+  -
+    name: exercise-angina
+    type: category
+
+  -
+    name: oldpeak
+    type: numerical
+
+  -
+    name: slope
+    type: category
+
+  -
+    name: colored-vessels
+    type: category
+
+  -
+    name: thal
+    type: category
+
+
+
+
+combiner:
+    type: concat
+    num_fc_layers: 1
+    fc_size: 48
+
+
+output_features:
+  -
+    name: narrowing-diagnosis
+    type: binary
